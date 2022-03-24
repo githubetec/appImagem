@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             imgview.setImageResource(R.drawable.escola1);
+            //trocar imagem
         }
     }
 
