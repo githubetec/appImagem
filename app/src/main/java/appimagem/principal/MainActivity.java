@@ -1,7 +1,6 @@
 package appimagem.principal;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imgview=findViewById(R.id.imgview);
-        btnAnima=findViewById(R.id.btnAnima);
+        btnAnima=findViewById(R.id.btnRotacao);
     }
     public void TrocarImg(View view) {
         if(imgview.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.escola1).getConstantState()) {
@@ -28,11 +27,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             imgview.setImageResource(R.drawable.escola1);
-            //trocar imagem
         }
     }
 
-    public void Animacao(View view) {
+    public void Rotacao(View view) {
         if(imgrotatacao.equals("D")) {
             imgview.setRotationY(15);
             imgrotatacao="E";
@@ -48,7 +46,19 @@ public class MainActivity extends AppCompatActivity {
     }
     public void Centralizar(View view)  {
         imgview.setRotationY(0);
+        imgview.setRotation(0);
+        imgview.animate().alpha(1.0f).start();
+        imgview.animate().setDuration(500);
         btnAnima.setText("Animação");
         Toast.makeText(this, "Imagem Centralizada", Toast.LENGTH_SHORT).show();
+    }
+    public void AnimacaoP360(View view) {
+        imgview.animate().rotation(360).start();
+    }
+
+    public void AnimacaoN360(View view) {
+        imgview.animate().rotation(-360).start();
+        imgview.animate().setDuration(2000);
+        imgview.animate().alpha(0.2f).start();
     }
 }
